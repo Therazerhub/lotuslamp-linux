@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LotusLamp · Control</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+
+  <header class="top">
+    <div class="brand">
+      <span class="logo"></span>
+      <div>
+        <h1>LotusLamp<span>ctl</span></h1>
+        <p class="sub">desktop control for your LED strip</p>
+      </div>
+    </div>
+    <div class="conn" id="conn">
+      <span class="dot" id="connDot"></span>
+      <span id="connText">offline</span>
+    </div>
+  </header>
+
+  <main class="grid">
+
+    <!-- left column -->
+    <section class="card connect-card">
+      <h2>Device</h2>
+      <div class="row">
+        <input id="devList" class="mono" placeholder="scanning…" readonly>
+        <button id="scanBtn" class="btn">scan</button>
+      </div>
+      <div class="row">
+        <button id="connBtn" class="btn primary">connect</button>
+        <button id="discBtn" class="btn ghost">disconnect</button>
+      </div>
+      <div class="statusline" id="connStatus">no device</div>
+    </section>
+
+    <section class="card">
+      <h2>Power</h2>
+      <div class="row">
+        <button id="powerBtn" class="btn wide">ON / OFF</button>
+        <div class="preview" id="previewSwatch"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Color</h2>
+      <div class="colorwell" id="colorwell"></div>
+      <input type="color" id="colorInput" value="#ffffff">
+      <div class="row presets" id="palettes"></div>
+      <label class="lbl">Brightness  <span id="brVal" class="mono">128</span></label>
+      <input type="range" id="brightness" class="range" min="0" max="255" value="128">
+    </section>
+
+    <section class="card">
+      <h2>Effects</h2>
+      <label class="lbl">Mode <select id="modeSelect" class="mono"></select></label>
+      <label class="lbl">Speed <span id="spdVal" class="mono">128</span></label>
+      <input type="range" id="speed" class="range" min="1" max="255" value="128">
+    </section>
+
+    <section class="card music">
+      <h2>Music Sync <span class="tag" id="musicTag">off</span></h2>
+      <div class="row">
+        <button data-m="spectrum" class="btn mbtn">spectrum</button>
+        <button data-m="pulse" class="btn mbtn">pulse</button>
+        <button data-m="off" class="btn mbtn">off</button>
+      </div>
+      <div id="musicControls" class="muted" style="display:none">
+        <label class="lbl">Palette
+          <select id="palette" class="mono">
+            <option>spectrum</option>
+            <option>fire</option>
+            <option>ocean</option>
+            <option>sunset</option>
+            <option>mono</option>
+          </select>
+        </label>
+        <label class="lbl">Sensitivity <span id="sensVal" class="mono">1.0</span></label>
+        <input type="range" id="sensitivity" class="range" min="0.2" max="3" step="0.1" value="1.0">
+        <div class="spectrum" id="bars"></div>
+        <div class="statusline" id="musicStatus">awaiting signal</div>
+      </div>
+    </section>
+
+  </main>
+  <footer class="foot">LotusLamp Linux · local only · feel the light</footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
